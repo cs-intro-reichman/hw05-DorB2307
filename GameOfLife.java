@@ -57,7 +57,7 @@ public class GameOfLife {
 	// and the rightmost columns. Thus the actual board is surrounded by a "frame" of zeros. You can think
 	// of this frame as representing the infinite number of dead cells that exist in every direction.
 	// This function assumes that the input file contains valid data, and does no input testing.
-	private static int[][] read(String fileName) {
+	static int[][] read(String fileName) {
 		In in = new In(fileName); // Constructs an In object for reading the input file
 		int rows = Integer.parseInt(in.readLine());
 		int cols = Integer.parseInt(in.readLine());
@@ -84,7 +84,7 @@ public class GameOfLife {
 	// Creates a new board from the given board, using the rules of the game.
 	// Uses the cellValue(board,i,j) function to compute the value of each 
 	// cell in the new board. Returns the new board.
-	private static int[][] evolve(int[][] board) {
+	static int[][] evolve(int[][] board) {
 		int N = board.length, M = board[0].length;
 		int[][] newBoard = new int[N][M];
 		for (int i = 1; i < N - 1; i++) {
@@ -104,7 +104,7 @@ public class GameOfLife {
 	// Assumes that i is at least 1 and at most the number of rows in the board - 1. 
 	// Assumes that j is at least 1 and at most the number of columns in the board - 1. 
 	// Uses the count(board,i,j) function to count the number of alive neighbors.
-	private static int cellValue(int[][] board, int i, int j) {
+	static int cellValue(int[][] board, int i, int j) {
 		int aliveCells = count(board, i, j);
 		if (board[i][j] == 1) {
 			if (aliveCells < 2) {
@@ -129,7 +129,7 @@ public class GameOfLife {
 	// (The cell itself is not counted).
 	// Assumes that i is at least 1 and at most the number of rows in the board - 1. 
 	// Assumes that j is at least 1 and at most the number of columns in the board - 1. 
-	private static int count(int[][] board, int i, int j) {
+	static int count(int[][] board, int i, int j) {
 		int aliveCells = 0;
 		for (int x = i - 1; x <= i + 1; x++) {
 			for (int y = j - 1; y <= j + 1; y++) {
@@ -142,7 +142,7 @@ public class GameOfLife {
 	}
 	
 	// Prints the board. Alive and dead cells are printed as 1 and 0, respectively.
-    private static void print(int[][] arr) {
+    static void print(int[][] arr) {
 		int N = arr.length, M = arr[0].length;
 		for(int i = 0; i < N; i++) {
 			for(int j = 0; j < M; j++) {

@@ -146,7 +146,7 @@ public class GameOfLife {
 		int N = arr.length, M = arr[0].length;
 		for(int i = 0; i < N; i++) {
 			for(int j = 0; j < M; j++) {
-				System.out.printf("%4s", arr[i][j]);
+				System.out.printf("%2s", arr[i][j]);
 			}
 			System.out.println();
 		}

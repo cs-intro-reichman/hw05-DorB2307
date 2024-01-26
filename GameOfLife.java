@@ -64,6 +64,7 @@ public class GameOfLife {
 		int[][] board = new int[rows + 2][cols + 2];
 		String s = "";
 		int count = 0;
+		/* you should have used while(!in.isEmpty()) */
 		while (s != null) {
 			s = in.readLine();
 			count++;
@@ -87,6 +88,19 @@ public class GameOfLife {
 	static int[][] evolve(int[][] board) {
 		int N = board.length, M = board[0].length;
 		int[][] newBoard = new int[N][M];
+		/* 
+  		notice this general note, running on arr[0].length is right in this case because 
+		the matrix is a rectangle/square but in the case of a 2D array that does not necessarily have the
+		same row length in all rows this code will fail.
+		for example: arr = {
+			{1,2,3},
+			{4},
+			{5,6},
+			{8,9,10,11,12,13,14,15},
+			{}
+		}
+		because of that, we need to run on arr[i].length at each iteration
+  		*/
 		for (int i = 1; i < N - 1; i++) {
 			for (int j = 1; j < M - 1; j++) {
 				newBoard[i][j] = cellValue(board, i, j);
